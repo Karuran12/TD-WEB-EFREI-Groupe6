@@ -19,9 +19,12 @@ switch ($page) {
     case 'deconnexion':
         include 'deconnexion.php';
         break;
-    case 'panier':
-        include 'view/panier.php';
-        break;     
+    case 'plat':
+        include 'view/plat.php';
+        break;
+    case 'filtre':
+        include 'view/filtre.php';
+        break; 
     default:
         include 'view/404.php';
 }
