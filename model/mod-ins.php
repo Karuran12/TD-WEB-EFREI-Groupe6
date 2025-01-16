@@ -1,5 +1,5 @@
 <?php
-include_once './model/bdd.php';
+include_once 'bdd.php';
 
 $pdo = Bdd::connexion(); 
 
@@ -31,8 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'password' => $hashedPassword
                 ]);
 
-                header('Location: index.php?page=accueil');
-                exit();
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+                $stmt->execute(['email' => $email]);
+                $user = $stmt->fetch();
+
+                if ($user) {
+                    $_SESSION['user'] = $user;
+                    header('Location: index.php?page=accueil');
+                    exit();
+                }
             }
         }
     } else {

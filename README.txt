@@ -22,7 +22,8 @@ CREATE TABLE users (
     username VARCHAR(20) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL, 
     password VARCHAR(255) NOT NULL, 
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    avatar VARCHAR(255) DEFAULT 'photos/avatar1.png'
 );
 
 -- Création de la table admins
