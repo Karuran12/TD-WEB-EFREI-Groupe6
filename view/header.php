@@ -22,6 +22,11 @@ $isConnected = isset($_SESSION['user']);
                     🔍
                 </button>
             </form>
+            <div class="filter-image">
+                <a href="filter.php">
+                    <img src="photos/filtre.png" alt="Filtre">
+                </a>
+            </div>
             <div class="menu">
                 <?php if ($isConnected): ?>
                     <div class="menu-icon" onclick="toggleMenu()">☰</div>
