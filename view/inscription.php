@@ -2,15 +2,8 @@
 include_once './model/mod-ins.php'; 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <link rel="stylesheet" href="./styles/insconstyles.css">
-    <link rel="stylesheet" href="styles/navstyles.css">
-</head>
+<link rel="stylesheet" href="./styles/insconstyles.css">
+
 <body>
     <div class="form-container">
         <h1>Inscription</h1>
@@ -29,32 +22,34 @@ include_once './model/mod-ins.php';
             <input type="password" name="confirm_password" placeholder="Confirmez le mot de passe" required>
             <br>
 
-            <!-- Choix de l'avatar -->
             <div class="avatar-selection">
                 <h3>Choisissez un avatar :</h3>
                 <label>
                     <input type="radio" name="avatar" value="avatar1.png" checked>
-                    <img src="./images/avatar1.png" alt="Avatar 1" style="width: 50px; height: 50px;">
+                    <img src="./photos/avatar1.png" alt="Avatar 1" style="width: 50px; height: 50px;">
                 </label>
                 <label>
                     <input type="radio" name="avatar" value="avatar2.png">
-                    <img src="./images/avatar2.png" alt="Avatar 2" style="width: 50px; height: 50px;">
+                    <img src="./photos/avatar2.png" alt="Avatar 2" style="width: 50px; height: 50px;">
                 </label>
                 <label>
                     <input type="radio" name="avatar" value="avatar3.png">
-                    <img src="./images/avatar3.png" alt="Avatar 3" style="width: 50px; height: 50px;">
+                    <img src="./photos/avatar3.png" alt="Avatar 3" style="width: 50px; height: 50px;">
                 </label>
                 <label>
                     <input type="radio" name="avatar" value="avatar4.png">
-                    <img src="./images/avatar4.png" alt="Avatar 4" style="width: 50px; height: 50px;">
+                    <img src="./photos/avatar4.png" alt="Avatar 4" style="width: 50px; height: 50px;">
                 </label>
             </div>
             <br>
             <br>
-            <button type="submit">S'inscrire</button>
+            <div class="button-container">
+                <button type="submit" class="form-button">S'inscrire</button>
+            </div>
+
         </form>
 
-        <p>Déjà inscrit ? <a href="connexion.php">Connectez-vous ici</a></p>
+        <p>Déjà inscrit ? <a href="index.php?page=connexion">Connectez-vous ici</a></p>
     </div>
 </body>
 </html>

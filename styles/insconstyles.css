@@ -1,15 +1,13 @@
-/* Style général du body */
 body {
     height: 100vh;
     margin: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #f4f4f4; 
     font-family: Arial, sans-serif;
 }
 
-/* Style du conteneur du formulaire */
 .form-container {
     max-width: 400px;
     margin: 50px auto;
@@ -19,26 +17,23 @@ body {
     padding: 50px 130px;
 }
 
-/* Style du titre */
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Style des champs de saisie */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: calc(100% - 20px);
-    padding: 13px;
+    padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 23px; /* Arrondi des coins */
+    border-radius: 5px;
     font-size: 1em;
 }
 
-/* Style lorsque l'utilisateur se concentre sur un champ */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
@@ -46,24 +41,35 @@ input[type="password"]:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(51, 51, 51, 0.2);
 }
-
 /* Style du bouton de soumission */
-.form-button {
-    background-color: #333;
-    color: white;
+button[type="submit"] {
+    background-color: #333; /* Couleur sombre */
+    color: white; /* Texte blanc */
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 12px 50px;
+    border-radius: 25px;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Style au survol du bouton */
-.form-button:hover {
+/* Effet lorsque le bouton est cliqué */
+button[type="submit"]:active {
+    background-color: #222;
+    transform: scale(1);
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Effet au survol du bouton */
+button[type="submit"]:hover {
     background-color: #555;
+    transform: scale(1.05);
 }
 
-/* Message d'erreur */
 .error-message {
     color: red;
     font-size: 0.9em;
@@ -71,21 +77,62 @@ input[type="password"]:focus {
     text-align: center;
 }
 
-/* Style du paragraphe */
 p {
     text-align: center;
     color: #666;
     margin-top: 15px;
 }
 
-/* Style des liens */
 a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* Style au survol du lien */
 a:hover {
     text-decoration: underline;
+}
+
+
+/* Avatar */
+.avatar-selection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.avatar-selection h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.avatar-selection label {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.avatar-selection input[type="radio"] {
+    display: none;
+}
+
+.avatar-selection img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.avatar-selection input[type="radio"]:checked + img {
+    border-color: #4caf50;
+    transform: scale(1.1); 
+}
+
+.avatar-selection label:hover img {
+    border-color: #2196f3; 
+    transform: scale(1.05); 
 }

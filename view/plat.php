@@ -1,13 +1,5 @@
 <?php 
-session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-include_once 'config.php';
-
-$averageRating = 4.2;
-
-$totalVotes = 35;
+include_once './model/mod-pla.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +18,6 @@ $totalVotes = 35;
 </header>
 <div class="container">
     <section class="plat-container">
-        <!-- Image et avis -->
         <div class="plat-card">
             <div class="plat-image-container">
                 <img src="path/to/plat-image.jpg" alt="Image du plat" class="plat-image">
@@ -35,7 +26,6 @@ $totalVotes = 35;
                 <div class="plat-stars">
                     <div class="stars-display">
                         <?php 
-                        // Génération dynamique des étoiles en fonction de la moyenne
                         for ($i = 1; $i <= 5; $i++) {
                             echo $i <= $averageRating ? '⭐' : '☆';
                         }
@@ -47,7 +37,6 @@ $totalVotes = 35;
             </div>
         </div>
 
-        <!-- Description centrée dans une bulle -->
         <div class="plat-description-container">
             <div class="plat-description">
                 Plongez dans un univers de saveurs authentiques avec cette recette traditionnelle de Bœuf Bourguignon...
@@ -57,7 +46,6 @@ $totalVotes = 35;
     </section>
 </div>
 
-<!-- Popup de notation -->
 <div class="rating-popup" id="ratingPopup">
     <div class="popup-content">
         <h3>Notez cette recette</h3>
@@ -85,13 +73,12 @@ $totalVotes = 35;
             ratingPopup.style.display = 'none';
         });
 
-        // Gestion des étoiles
         const stars = document.querySelectorAll('.rating-star');
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                stars.forEach(s => s.textContent = '☆'); // Réinitialise toutes les étoiles
+                stars.forEach(s => s.textContent = '☆'); 
                 for (let i = 0; i < star.dataset.value; i++) {
-                    stars[i].textContent = '⭐'; // Ajoute des étoiles pleines
+                    stars[i].textContent = '⭐'; 
                 }
             });
         });

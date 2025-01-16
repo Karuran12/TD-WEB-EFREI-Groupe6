@@ -1,33 +1,19 @@
-/* Style général du body */
 body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    padding-top: 90px;
 }
 
-/* Navbar générale */
+/* Navbar */
 .navbar {
-    width: 95%;
-    height: 90px;
-    background-color: transparent;
-    position: fixed;
+    width: 95%; 
+    height: 90px; 
+    background-color: transparent; 
+    position: fixed; 
     top: 0;
     z-index: 1000;
     display: flex;
     align-items: center;
     padding-left: 20px;
-    box-shadow: none;
-}
-
-/* Navbar spécifique pour la page d'inscription */
-.navbar.navbar-inscription {
-    background-color: #ffffff; /* Fond blanc pour la navbar d'inscription */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre spécifique */
-    padding-left: 40px; /* Ajuste le padding pour l'inscription si nécessaire */
+    box-shadow: none; 
 }
 
 /* Header */
@@ -39,9 +25,9 @@ body {
 
 /* Logo */
 .logo img {
-    height: 80px;
+    height: 80px; 
     width: auto;
-    object-fit: contain;
+    object-fit: contain; 
 }
 
 /* Barre de recherche */
@@ -62,7 +48,7 @@ body {
     outline: none;
     font-size: 1rem;
     transition: box-shadow 0.3s ease;
-    background-color: white;
+    background-color: white; 
 }
 
 .search-bar input:focus {
@@ -87,27 +73,62 @@ body {
     color: #000;
 }
 
+
 /* Avatar */
 .avatar {
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .avatar img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid white;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-/* Image de filtre */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.text-black {
+    color: black;
+}
+
+.shadow-lg {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+/*Filtre*/
 .filter-image img {
     width: 35px;
     height: 35px;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 50%; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

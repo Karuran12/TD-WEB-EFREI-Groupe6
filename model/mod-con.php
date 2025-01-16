@@ -1,28 +1,28 @@
 <?php
-include_once './model/bdd.php';
+include_once 'bdd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = htmlspecialchars($_POST['nom']); 
-    $password = $_POST['password'];
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
-    try {
-        $bdd = Bdd::connexion();
-        $stmt = $bdd->prepare("SELECT * FROM users WHERE username = ?");  
-        $stmt->execute([$username]); 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($username && $password) {
+        $stmt = $pdo->prepare("SELECT id, username, avatar, password FROM users WHERE username = :username");
+        $stmt->execute(['username' => $username]);
 
+        $user = $stmt->fetch();
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user'] = [
                 'id' => $user['id'],
-                'username' => $user['username'],  
+                'username' => $user['username'],
+                'avatar' => $user['avatar'] ?? 'photos/default-avatar.png' 
             ];
             header('Location: index.php?page=accueil');
-            exit;
+            exit();
         } else {
-            $error = "Nom ou mot de passe incorrect";
+            $error = "Nom d'utilisateur ou mot de passe incorrect.";
         }
-    } catch (Exception $e) {
-        $error = "Erreur : " . $e->getMessage();
+    } else {
+        $error = "Veuillez remplir tous les champs.";
     }
 }
 ?>
