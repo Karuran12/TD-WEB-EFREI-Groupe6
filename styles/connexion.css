@@ -1,0 +1,116 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #f4f4f4; 
+    font-family: Arial, sans-serif;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 50px 130px;
+}
+.admin-banner {
+    width: 100%;
+    background-color: #666; 
+    padding: 50px 0;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admin-banner h3 {
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: bold;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #333;
+    outline: none;
+    box-shadow: 0 0 5px rgba(51, 51, 51, 0.2);
+}
+/* Style du bouton de soumission */
+button[type="submit"] {
+    background-color: #333; /* Couleur sombre */
+    color: white; /* Texte blanc */
+    border: none;
+    padding: 12px 50px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Effet lorsque le bouton est cliqué */
+button[type="submit"]:active {
+    background-color: #222;
+    transform: scale(1);
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Effet au survol du bouton */
+button[type="submit"]:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    color: #666;
+    margin-top: 15px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
