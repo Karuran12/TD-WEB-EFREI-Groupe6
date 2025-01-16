@@ -42,20 +42,31 @@ input[type="password"]:focus {
     box-shadow: 0 0 5px rgba(51, 51, 51, 0.2);
 }
 
-.form-button {
-    background-color: #333;
-    color: white;
+button[type="submit"] {
+    background-color: #333; 
+    color: white; 
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 12px 50px;
+    border-radius: 25px;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.form-button:hover {
+button[type="submit"]:active {
+    background-color: #222;
+    transform: scale(1);
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
     background-color: #555;
+    transform: scale(1.05);
 }
-
 
 .error-message {
     color: red;
