@@ -4,8 +4,6 @@ include_once 'model/mod-rec.php';
 $recipes = getAllRecipes();
 $latestRecipes = getLatestRecipes(); 
 $bestRatedRecipes = getTopRatedRecipes(); 
-error_log('Recipe ID: ' . $recipe['id']); 
-
 ?>
 
 <link rel="stylesheet" href="./styles/accstyles.css">
@@ -38,9 +36,10 @@ error_log('Recipe ID: ' . $recipe['id']);
                     <a href="index.php?page=plus&id=<?= $recipe['id'] ?>" class="btn-action btn-plus">+</a>
                     <button 
                         class="btn-action btn-heart" 
-                        data-recipe-id="<?= $recipe['id'] ?>" 
+                        data-recipe-id="<?= htmlspecialchars($recipe['id']) ?>" 
                         onclick="handleLike(this)">❤️
                     </button>
+
                 </div>
                 <div class="recipe-info">
                     <h2><?= htmlspecialchars($recipe['recipe_name'] ?? 'Recette sans nom') ?></h2>
@@ -80,9 +79,10 @@ error_log('Recipe ID: ' . $recipe['id']);
                     <a href="index.php?page=plus&id=<?= $recipe['id'] ?>" class="btn-action btn-plus">+</a>
                     <button 
                         class="btn-action btn-heart" 
-                        data-recipe-id="<?= $recipe['id'] ?>" 
+                        data-recipe-id="<?= htmlspecialchars($recipe['id']) ?>" 
                         onclick="handleLike(this)">❤️
                     </button>
+
                     </div>
                     <div class="recipe-info">
                         <h2><?= htmlspecialchars($recipe['name'] ?? 'Recette sans nom') ?></h2>
@@ -108,7 +108,7 @@ error_log('Recipe ID: ' . $recipe['id']);
     </div>
 </div>
 
-<script src="scr-acc.js"></script>
+<script src="./script/scr-acc.js"></script>
 <script>
     const carousel = document.getElementById('recipe-carousel');
     let offset = 0;

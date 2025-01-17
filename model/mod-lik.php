@@ -1,6 +1,5 @@
 <?php
 include_once 'bdd.php';
-session_start();
 
 if (!isset($_SESSION['user'])) {
     echo json_encode(['error' => 'Vous devez être connecté pour liker une recette.']);
@@ -8,6 +7,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 $data = json_decode(file_get_contents('php://input'), true);
+error_log('Données reçues dans mod-lik.php : ' . json_encode($data));
 
 if (!isset($data['recipe_id'])) {
     echo json_encode(['error' => 'Identifiant de recette manquant.']);
@@ -22,7 +22,7 @@ try {
     $stmt = $pdo->prepare("
         INSERT INTO recipe_likes (user_id, recipe_id)
         VALUES (:user_id, :recipe_id)
-        ON DUPLICATE KEY UPDATE date_ajout = CURRENT_TIMESTAMP
+        ON CONFLICT (user_id, recipe_id) DO NOTHING
     ");
     $stmt->execute([
         'user_id' => $user_id,

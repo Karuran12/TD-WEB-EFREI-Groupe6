@@ -1,6 +1,30 @@
 <?php
 include_once 'bdd.php';
 
+
+if (isset($_GET['search'])) {
+    $search = htmlspecialchars($_GET['search']);
+
+    $query = $pdo->prepare("SELECT * FROM recipes WHERE LOWER(name) LIKE LOWER(:search)");
+    $query->execute(['search' => '%' . $search . '%']);
+    $results = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($results) {
+        echo "<h1>Résultats pour : $search</h1>";
+        foreach ($results as $recipe) {
+            echo "<div>";
+            echo "<h2>" . htmlspecialchars($recipe['name']) . "</h2>";
+            echo "<p>" . htmlspecialchars($recipe['description']) . "</p>";
+            echo "<img src='" . htmlspecialchars($recipe['image']) . "' alt='" . htmlspecialchars($recipe['name']) . "'>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Aucune recette trouvée pour \"$search\".</p>";
+    }
+} else {
+    echo "<p>Veuillez entrer un terme de recherche.</p>";
+}
+
 function getRecipeDetails($recipeId) {
     $pdo = Bdd::connexion();
 

@@ -1,5 +1,7 @@
 <?php 
 include_once './model/mod-fil.php'; 
+$ingredientsByCategory = getIngredientsByCategory();
+
 ?>
 
 <link rel="stylesheet" href="./styles/filstyles.css">

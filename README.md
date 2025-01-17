@@ -18,7 +18,7 @@ CREATE DATABASE sauce
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
-    
+ 
 -- Création de la table users
 CREATE TABLE users (
     id SERIAL PRIMARY KEY, 
@@ -47,6 +47,7 @@ CREATE TABLE recipes (
 	category VARCHAR(50),
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- Table des ingrédients
 CREATE TABLE ingredients (
@@ -77,15 +78,17 @@ CREATE TABLE ratings (
     CONSTRAINT fk_ratings_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE recipe_likes (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS recipe_likes (
+    id SERIAL PRIMARY KEY, 
     user_id INT NOT NULL,
     recipe_id INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(user_id, recipe_id),
-    CONSTRAINT fk_recipe_likes_users FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_recipe_likes_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
+    date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
+    UNIQUE(user_id, recipe_id) 
 );
+
+SELECT * FROM users;
 
 -- Ajouter des recettes
 INSERT INTO recipes (name, description, image, category) VALUES

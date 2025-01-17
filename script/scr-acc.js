@@ -1,3 +1,5 @@
+// === SECTION 1 : Définitions des carrousels ===
+
 function manualCarousel() {
     return {
         currentIndex: 0,
@@ -38,7 +40,7 @@ function manualCarousel() {
                 behavior: "smooth"
             });
         }
-    }
+    };
 }
 
 function infiniteCarousel() {
@@ -49,14 +51,14 @@ function infiniteCarousel() {
             if (!recipesContainer) return;
 
             let scrollAmount = 0;
-            const step = 2; 
-            const interval = 30; 
+            const step = 2;
+            const interval = 30;
 
             setInterval(() => {
                 scrollAmount += step;
 
                 if (scrollAmount >= recipesContainer.scrollWidth) {
-                    scrollAmount = 0; 
+                    scrollAmount = 0;
                 }
 
                 recipesContainer.scrollTo({
@@ -65,8 +67,11 @@ function infiniteCarousel() {
                 });
             }, interval);
         }
-    }
+    };
 }
+
+// === SECTION 2 : Fonctions génériques et utilitaires ===
+
 /**
  * Fonction générique pour envoyer une requête AJAX.
  */
@@ -94,11 +99,15 @@ async function sendAjaxRequest(url, method = 'GET', data = null) {
     }
 }
 
+// === SECTION 3 : Gestion des interactions utilisateur ===
+
 /**
  * Gestion du bouton "like".
  */
 async function handleLike(button) {
     const recipeId = button.getAttribute('data-recipe-id');
+    console.log('Recipe ID envoyé :', recipeId);
+
     if (!recipeId) {
         alert('Erreur : ID de recette introuvable.');
         return;
@@ -154,4 +163,82 @@ async function getLikedRecipes() {
     }
 }
 
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
 
+// === SECTION 4 : Recherche et affichage des recettes ===
+
+const recipes = [
+    { title: "Spaghetti Bolognese", description: "Un plat italien classique." },
+    { title: "Curry de poulet", description: "Une délicieuse recette indienne." },
+    { title: "Tarte aux pommes", description: "Un dessert français traditionnel." },
+    { title: "Ratatouille", description: "Un plat végétarien méditerranéen." },
+    { title: "Poulet rôti", description: "Un classique du dimanche." }
+];
+
+const searchBar = document.getElementById("searchBar");
+const header = document.getElementById("header");
+const cardsContainer = document.getElementById("cardsContainer");
+
+// Fonction pour afficher les recettes sous forme de cartes
+function displayRecipes(filteredRecipes) {
+    cardsContainer.innerHTML = ""; // Réinitialise le conteneur
+
+    if (filteredRecipes.length === 0) {
+        cardsContainer.innerHTML = "<p>Aucune recette trouvée.</p>";
+        return;
+    }
+
+    filteredRecipes.forEach(recipe => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const cardTitle = document.createElement("h2");
+        cardTitle.textContent = recipe.title;
+
+        const cardDescription = document.createElement("p");
+        cardDescription.textContent = recipe.description;
+
+        card.appendChild(cardTitle);
+        card.appendChild(cardDescription);
+        cardsContainer.appendChild(card);
+    });
+}
+
+// Affiche toutes les recettes au début
+displayRecipes(recipes);
+
+// Ajout d'un événement pour le champ de recherche
+searchBar.addEventListener("input", () => {
+    const query = searchBar.value.toLowerCase();
+
+    const filteredRecipes = recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(query)
+    );
+
+    // Si une recherche est effectuée, réduire le titre principal
+    if (query) {
+        header.querySelector("h1").textContent = "Résultats de recherche";
+    } else {
+        header.querySelector("h1").textContent = "Les plats les plus récents";
+    }
+
+    displayRecipes(filteredRecipes);
+});
+
+// === SECTION 5 : Initialisation et comportements liés au DOM ===
+
+const carousel = document.getElementById('recipe-carousel');
+let offset = 0;
+
+function scrollCarousel() {
+    offset += 1;
+    if (offset >= carousel.scrollWidth - carousel.clientWidth) {
+        offset = 0;
+    }
+    carousel.style.transform = `translateX(-${offset}px)`;
+}
+
+setInterval(scrollCarousel, 30);
