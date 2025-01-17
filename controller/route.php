@@ -23,8 +23,14 @@ switch ($page) {
         include 'view/plat.php';
         break;
     case 'filtre':
-        include 'view/filtre.php';
-        break; 
+        include_once './model/mod-fil.php';
+        $ingredientsByCategory = getIngredientsByCategory();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $selectedIngredients = $_POST['ingredients'] ?? [];
+            $recipes = getFilteredRecipes($selectedIngredients);
+        }
+        include './view/filtre.php';
+        break;
     default:
         include 'view/404.php';
 }

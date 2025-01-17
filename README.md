@@ -19,7 +19,6 @@ CREATE DATABASE sauce
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
-
 -- Création de la table users
 CREATE TABLE users (
     id SERIAL PRIMARY KEY, 
@@ -44,7 +43,8 @@ CREATE TABLE recipes (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(100) NOT NULL, 
     description TEXT, 
-    image VARCHAR(255)
+    image VARCHAR(255),
+	category VARCHAR(50)
 );
 
 -- Table des ingrédients
@@ -77,19 +77,19 @@ CREATE TABLE ratings (
 );
 
 -- Ajouter des recettes
-INSERT INTO recipes (name, description, image) VALUES
-('Tarte aux pommes', 'Une délicieuse tarte aux pommes maison.', 'photos-recettes/tarte_pommes.jpeg'),
-('Pizza Margherita', 'Une pizza italienne classique.', 'photos-recettes/pizzamar.jpeg'),
-('Tarte aux fraises', 'Une tarte fraîche avec des fraises juteuses.', 'photos-recettes/tarte_fraises.jpeg'),
-('Quiche Lorraine', 'Une quiche classique avec lardons et crème.', 'photos-recettes/quiche_lorraine.jpeg'),
-('Boeuf Bourguignon', 'Un ragoût français traditionnel au vin rouge.', 'photos-recettes/boeuf_bourguignon.jpeg'),
-('Ratatouille', 'Un plat végétarien provençal avec des légumes frais.', 'photos-recettes/ratatouille.jpeg'),
-('Pâtes Carbonara', 'Des pâtes italiennes avec une sauce crémeuse aux lardons.', 'photos-recettes/pates_carbonara.jpeg'),
-('Soupe à l’oignon', 'Une soupe traditionnelle française gratinée.', 'photos-recettes/soupe_oignon.jpeg'),
-('Brownies au chocolat', 'Des brownies fondants et riches en chocolat.', 'photos-recettes/brownies.jpeg'),
-('Lasagnes', 'Des lasagnes riches avec de la viande et de la sauce béchamel.', 'photos-recettes/lasagnes.jpeg'),
-('Crêpes Suzette', 'Des crêpes classiques flambées à l’orange.', 'photos-recettes/crepes_suzette.jpeg'),
-('Salade César', 'Une salade légère avec poulet, croûtons et parmesan.', 'photos-recettes/salade_cesar.jpeg');
+INSERT INTO recipes (name, description, image, category) VALUES
+('Tarte aux pommes', 'Une délicieuse tarte aux pommes maison.', 'photos-recettes/tarte_pommes.jpeg', 'Dessert'),
+('Pizza Margherita', 'Une pizza italienne classique.', 'photos-recettes/pizzamar.jpeg', 'Plat principal'),
+('Tarte aux fraises', 'Une tarte fraîche avec des fraises juteuses.', 'photos-recettes/tarte_fraises.jpeg', 'Dessert'),
+('Quiche Lorraine', 'Une quiche classique avec lardons et crème.', 'photos-recettes/quiche_lorraine.jpeg', 'Entrée'),
+('Boeuf Bourguignon', 'Un ragoût français traditionnel au vin rouge.', 'photos-recettes/boeuf_bourguignon.jpeg', 'Plat principal'),
+('Ratatouille', 'Un plat végétarien provençal avec des légumes frais.', 'photos-recettes/ratatouille.jpeg', 'Accompagnement'),
+('Pâtes Carbonara', 'Des pâtes italiennes avec une sauce crémeuse aux lardons.', 'photos-recettes/pates_carbonara.jpeg', 'Plat principal'),
+('Soupe à l’oignon', 'Une soupe traditionnelle française gratinée.', 'photos-recettes/soupe_oignon.jpeg', 'Entrée'),
+('Brownies au chocolat', 'Des brownies fondants et riches en chocolat.', 'photos-recettes/brownies.jpeg', 'Dessert'),
+('Lasagnes', 'Des lasagnes riches avec de la viande et de la sauce béchamel.', 'photos-recettes/lasagnes.jpeg', 'Plat principal'),
+('Crêpes Suzette', 'Des crêpes classiques flambées à l’orange.', 'photos-recettes/crepes_suzette.jpeg', 'Dessert'),
+('Salade César', 'Une salade légère avec poulet, croûtons et parmesan.', 'photos-recettes/salade_cesar.jpeg', 'Entrée');
 
 -- Ajouter des ingrédients pour les nouvelles recettes
 INSERT INTO ingredients (name, quantity, category) VALUES
@@ -198,5 +198,4 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES
 -- Salade César
 (12, 33),
 (12, 34),
-(12, 35),
-(12, 22);
+(12, 35);

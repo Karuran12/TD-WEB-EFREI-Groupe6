@@ -14,7 +14,7 @@ include_once './model/mod-acc.php';
                     alt="Image de <?= htmlspecialchars($recipe['name'] ?? 'Recette inconnue') ?>" 
                     class="recipe-image"
                 >
-                <h2><?= htmlspecialchars($recipe['name'] ?? 'Recette sans nom') ?></h2>
+                <h2><?= htmlspecialchars($recipe['recipe_name'] ?? 'Recette sans nom') ?></h2>
                 <p><strong>Description :</strong> <?= htmlspecialchars($recipe['description'] ?? 'Aucune description disponible.') ?></p>
                 <p><strong>Note Moyenne :</strong> <?= number_format($recipe['avg_rating'] ?? 0, 1) ?> / 5</p>
                 <p><strong>Ingrédients :</strong></p>
