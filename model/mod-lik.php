@@ -23,3 +23,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recipe_id'])) {
 
 echo json_encode(['success' => false, 'message' => 'Requête invalide.']);
 exit();
+?>

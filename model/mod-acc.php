@@ -72,7 +72,7 @@ function getLatestRecipes() {
     $pdo = Bdd::connexion();
 
     $sql = "
-        SELECT r.id, r.name AS recipe_name, r.description, r.image, r.category, r.created_at,
+        SELECT r.id, r.name AS recipe_name, r.description, r.image, r.category,
                AVG(rt.rating) AS avg_rating
         FROM recipes r
         LEFT JOIN ratings rt ON r.id = rt.recipe_id
