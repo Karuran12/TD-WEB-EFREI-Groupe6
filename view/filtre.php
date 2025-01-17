@@ -15,7 +15,6 @@
 <body>
     <div class="container">
         <div class="ingredient-list">
-            <!-- Légumes -->
             <div class="ingredient-group">
                 <h3>Légumes</h3>
                 <div class="ingredient">
@@ -45,7 +44,6 @@
                 </div>
             </div>
 
-            <!-- Fruits -->
             <div class="ingredient-group">
                 <h3>Fruits</h3>
                 <div class="ingredient">
@@ -75,7 +73,6 @@
                 </div>
             </div>
 
-            <!-- Poissons et Fruits de Mer -->
             <div class="ingredient-group">
                 <h3>Poissons et Fruits de Mer</h3>
                 <div class="ingredient">
@@ -105,7 +102,6 @@
                 </div>
             </div>
 
-            <!-- Produits -->
             <div class="ingredient-group">
                 <h3>Produits</h3>
                 <div class="ingredient">
@@ -130,7 +126,6 @@
                 </div>
             </div>
 
-            <!-- Produits Boulangerie -->
             <div class="ingredient-group">
                 <h3>Produits Boulangerie</h3>
                 <div class="ingredient">

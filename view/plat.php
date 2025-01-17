@@ -35,8 +35,13 @@ include_once './model/mod-pla.php';
                     <button class="add-button" id="rateButton">Noter cette recette</button>
                 </div>
             </div>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <form method="POST" action="like.php" class="like-form">
+                        <input type="hidden" name="recipe_id" value="<?= $recipeId ?>">
+                        <button type="submit" name="like">LIKE</button>
+                    </form>
+                <?php endif; ?>
         </div>
-
         <div class="plat-description-container">
             <div class="plat-description">
                 Plongez dans un univers de saveurs authentiques avec cette recette traditionnelle de Bœuf Bourguignon...
@@ -83,6 +88,18 @@ include_once './model/mod-pla.php';
             });
         });
     });
+
+    $(document).ready(function(){
+        $('form.like-form').on('submit', function(event) {
+            event.preventDefault();
+            var form = $(this);
+
+            $.post(form.attr('action'), form.serialize(), function() {
+                alert("Recette ajoutée aux favoris !");
+            });
+        });
+    });
+
 </script>
 
 </body>

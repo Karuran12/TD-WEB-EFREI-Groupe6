@@ -24,7 +24,10 @@ switch ($page) {
         break;
     case 'filtre':
         include 'view/filtre.php';
-        break; 
+        break;
+    case 'aime':
+        include 'view/like.php';
+        break;
     default:
         include 'view/404.php';
 }

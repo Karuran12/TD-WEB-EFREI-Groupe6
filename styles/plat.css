@@ -146,3 +146,18 @@
         background-color: #dc3545;
         color: white;
     }
+
+    .btn-like {
+        background-color: #ff6961;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    .btn-like:hover {
+        background-color: #ff4c4c;
+    }
+    

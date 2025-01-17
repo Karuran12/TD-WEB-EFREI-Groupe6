@@ -53,6 +53,7 @@ include_once './model/mod-hea.php';
                 <ul>
                     <?php if ($isConnected): ?>
                         <li><a href="index.php?page=deconnexion">Déconnexion</a></li>
+                        <li><a href="index.php?page=aime">❤️</a></li>
                     <?php else: ?>
                         <li><a href="index.php?page=inscription">Inscription</a></li>
                         <li><a href="index.php?page=connexion">Connexion</a></li>
