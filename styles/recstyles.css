@@ -1,0 +1,171 @@
+/* Carte de recette paysage */
+.recipe-card-landscape {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+/* Image à gauche */
+.recipe-card-landscape .recipe-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Bloc d'informations */
+.recipe-card-landscape .recipe-info {
+    width: 50%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #333;
+}
+
+/* Titre de la recette */
+.recipe-card-landscape .recipe-info h2 {
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+/* Description et détails */
+.recipe-card-landscape .recipe-info p {
+    margin: 5px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Boutons */
+.recipe-card-landscape .recipe-info .actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.recipe-card-landscape .recipe-info .actions button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.recipe-card-landscape .recipe-info .actions .btn-like {
+    background-color: #ff4757;
+    color: white;
+}
+
+.recipe-card-landscape .recipe-info .actions .btn-like:hover {
+    background-color: #e84141;
+}
+
+.recipe-card-landscape .recipe-info .actions .btn-details {
+    background-color: #007bff;
+    color: white;
+}
+
+.recipe-card-landscape .recipe-info .actions .btn-details:hover {
+    background-color: #0056b3;
+}
+
+/* Carte de notation */
+.recipe-rating-card {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.recipe-rating-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.recipe-rating-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.recipe-rating-card ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.recipe-rating-card form {
+    margin-top: 15px;
+}
+
+.recipe-rating-card form input,
+.recipe-rating-card form textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.recipe-rating-card form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.recipe-rating-card form button:hover {
+    background-color: #0056b3;
+}
+
+.recipe-rating-card .actions {
+    margin-top: 15px;
+}
+
+.recipe-rating-card .btn-like {
+    background-color: #ff4757;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.recipe-rating-card .btn-like:hover {
+    background-color: #e84141;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .recipe-card-landscape {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .recipe-card-landscape .recipe-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .recipe-card-landscape .recipe-info {
+        width: 100%;
+    }
+}

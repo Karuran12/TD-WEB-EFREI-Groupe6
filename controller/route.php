@@ -19,8 +19,11 @@ switch ($page) {
     case 'deconnexion':
         include 'deconnexion.php';
         break;
-    case 'plat':
-        include 'view/plat.php';
+    case 'plus':
+        include 'view/recette.php';
+        break;
+    case 'like':
+        include 'view/like.php';
         break;
     case 'filtre':
         include_once './model/mod-fil.php';

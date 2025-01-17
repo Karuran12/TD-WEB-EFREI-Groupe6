@@ -46,7 +46,7 @@ include_once './model/mod-ins.php';
             <button type="submit">S'inscrire</button>
         </form>
 
-        <p>Déjà inscrit ? <a href="connexion.php">Connectez-vous ici</a></p>
+        <p>Déjà inscrit ? <a href="index.php?page=connexion">Connectez-vous ici</a></p>
     </div>
 </body>
 </html>

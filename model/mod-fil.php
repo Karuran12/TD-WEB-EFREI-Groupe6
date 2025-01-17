@@ -1,9 +1,6 @@
 <?php
 include_once 'bdd.php';
 
-$ingredientsByCategory = getIngredientsByCategory();
-
-
 function getIngredientsByCategory() {
     $pdo = Bdd::connexion();
 

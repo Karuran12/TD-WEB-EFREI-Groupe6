@@ -52,10 +52,12 @@ include_once './model/mod-hea.php';
             <div class="dropdown-menu" id="menu">
                 <ul>
                     <?php if ($isConnected): ?>
+                        <li><a href="index.php?page=like">Like</a></li>
                         <li><a href="index.php?page=deconnexion">Déconnexion</a></li>
                     <?php else: ?>
                         <li><a href="index.php?page=inscription">Inscription</a></li>
                         <li><a href="index.php?page=connexion">Connexion</a></li>
+                        <li><a href="index.php?page=like">Like</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
