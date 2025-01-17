@@ -1,0 +1,194 @@
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Conteneur pour les recettes */
+.recipes {
+    display: flex;
+    flex-wrap: nowrap; 
+    gap: 20px;
+    justify-content: flex-start; 
+    overflow-x: auto; 
+    padding: 10px;
+    scrollbar-width: thin; 
+}
+
+/* Barre de défilement personnalisée */
+.recipes::-webkit-scrollbar {
+    height: 8px; 
+}
+
+.recipes::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 10px; 
+}
+
+.recipes::-webkit-scrollbar-thumb:hover {
+    background-color: #555; 
+}
+
+/* Style des cartes de recettes */
+.recipe-card {
+    flex: 0 0 auto; 
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+/* Style des images */
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+/* Informations sur les recettes */
+.recipe-info {
+    padding: 20px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
+
+.recipe-info h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.recipe-info p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.recipe-info ul {
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+.recipe-info ul li {
+    list-style-type: disc;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+/* Conteneur des actions (Cœur et Plus) */
+.recipe-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Boutons d'action */
+.btn-action {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-action:hover {
+    transform: scale(1.2);
+    background-color: #e0e0e0;
+}
+
+/* Spécifique au bouton Cœur */
+.btn-heart {
+    color: red;
+    font-size: 1.5rem;
+}
+
+.btn-heart:hover {
+    color: darkred;
+}
+
+
+/* Défilement infini pour les recettes les mieux notées */
+.recipes-infinite {
+    overflow: hidden;
+    position: relative;
+}
+
+.recipes-infinite-content {
+    display: flex;
+    gap: 20px;
+    animation: scroll-infinite 20s linear infinite;
+}
+
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Container principal du carrousel */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Conteneur des items */
+.carousel {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Style pour chaque carte dans le carrousel */
+.carousel-item {
+    min-width: 300px; /* Largeur de la carte */
+    flex: 0 0 auto;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Image dans la carte */
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Titre dans la carte */
+.carousel-title {
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+.carousel-title h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Animation responsive */
+@media (max-width: 768px) {
+    .carousel-item {
+        min-width: 200px;
+    }
+}
