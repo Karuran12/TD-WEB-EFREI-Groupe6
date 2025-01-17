@@ -67,18 +67,91 @@ function infiniteCarousel() {
         }
     }
 }
+/**
+ * Fonction générique pour envoyer une requête AJAX.
+ */
+async function sendAjaxRequest(url, method = 'GET', data = null) {
+    const options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
 
-
-const carousel = document.getElementById('recipe-carousel');
-    let offset = 0;
-
-    function scrollCarousel() {
-        offset += 1;
-        if (offset >= carousel.scrollWidth - carousel.clientWidth) {
-            offset = 0; // Réinitialise le défilement
-        }
-        carousel.style.transform = `translateX(-${offset}px)`;
+    if (data) {
+        options.body = JSON.stringify(data);
     }
 
-    setInterval(scrollCarousel, 30); // Vitesse de défilement
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur AJAX :', error);
+        throw error;
+    }
+}
+
+/**
+ * Gestion du bouton "like".
+ */
+async function handleLike(button) {
+    const recipeId = button.getAttribute('data-recipe-id');
+    if (!recipeId) {
+        alert('Erreur : ID de recette introuvable.');
+        return;
+    }
+
+    try {
+        const response = await fetch('model/mod-lik.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ recipe_id: recipeId }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert('Recette ajoutée à vos favoris !');
+        } else if (result.error) {
+            alert('Erreur : ' + result.error);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la requête :', error);
+        alert('Une erreur est survenue.');
+    }
+}
+
+/**
+ * Récupération des recettes likées.
+ */
+async function getLikedRecipes() {
+    try {
+        const response = await sendAjaxRequest('model/mod-lik.php', 'GET');
+        console.log('Recettes likées :', response);
+
+        const container = document.querySelector('#liked-recipes-container');
+        if (!container) {
+            console.error('Conteneur des recettes likées introuvable.');
+            return;
+        }
+
+        container.innerHTML = '';
+        response.forEach(recipe => {
+            container.innerHTML += `
+                <div class="recipe-card">
+                    <img src="${recipe.image}" alt="${recipe.name}" />
+                    <h3>${recipe.name}</h3>
+                    <p>${recipe.description}</p>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des recettes likées :', error);
+    }
+}
+
 

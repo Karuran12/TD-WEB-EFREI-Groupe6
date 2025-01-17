@@ -1,25 +1,36 @@
 <?php
-include_once './model/mod-acc.php';
+include_once 'bdd.php';
 session_start();
-header('Content-Type: application/json');
 
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'Vous devez être connecté pour liker une recette.']);
+if (!isset($_SESSION['user'])) {
+    echo json_encode(['error' => 'Vous devez être connecté pour liker une recette.']);
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recipe_id'])) {
-    $recipeId = intval($_POST['recipe_id']);
-    $userId = $_SESSION['user_id'];
+$data = json_decode(file_get_contents('php://input'), true);
 
-    $isLiked = toggleLike($userId, $recipeId);
+if (!isset($data['recipe_id'])) {
+    echo json_encode(['error' => 'Identifiant de recette manquant.']);
+    exit();
+}
 
-    echo json_encode([
-        'success' => true,
-        'message' => $isLiked ? 'Recette likée avec succès.' : 'Like retiré avec succès.'
+$recipe_id = (int)$data['recipe_id'];
+$user_id = (int)$_SESSION['user']['id'];
+
+try {
+    $pdo = Bdd::connexion();
+    $stmt = $pdo->prepare("
+        INSERT INTO recipe_likes (user_id, recipe_id)
+        VALUES (:user_id, :recipe_id)
+        ON DUPLICATE KEY UPDATE date_ajout = CURRENT_TIMESTAMP
+    ");
+    $stmt->execute([
+        'user_id' => $user_id,
+        'recipe_id' => $recipe_id,
     ]);
-    exit();
-}
 
-echo json_encode(['success' => false, 'message' => 'Requête invalide.']);
-exit();
+    echo json_encode(['success' => true]);
+} catch (Exception $e) {
+    echo json_encode(['error' => 'Erreur lors de l\'ajout du like : ' . $e->getMessage()]);
+}
+?>

@@ -4,6 +4,8 @@ include_once 'model/mod-rec.php';
 $recipes = getAllRecipes();
 $latestRecipes = getLatestRecipes(); 
 $bestRatedRecipes = getTopRatedRecipes(); 
+error_log('Recipe ID: ' . $recipe['id']); 
+
 ?>
 
 <link rel="stylesheet" href="./styles/accstyles.css">
@@ -34,7 +36,11 @@ $bestRatedRecipes = getTopRatedRecipes();
                 >
                 <div class="recipe-actions">
                     <a href="index.php?page=plus&id=<?= $recipe['id'] ?>" class="btn-action btn-plus">+</a>
-                    <button class="btn-action btn-heart">❤️</button>
+                    <button 
+                        class="btn-action btn-heart" 
+                        data-recipe-id="<?= $recipe['id'] ?>" 
+                        onclick="handleLike(this)">❤️
+                    </button>
                 </div>
                 <div class="recipe-info">
                     <h2><?= htmlspecialchars($recipe['recipe_name'] ?? 'Recette sans nom') ?></h2>
@@ -72,7 +78,11 @@ $bestRatedRecipes = getTopRatedRecipes();
                     >
                     <div class="recipe-actions">
                     <a href="index.php?page=plus&id=<?= $recipe['id'] ?>" class="btn-action btn-plus">+</a>
-                    <button class="btn-action btn-heart">❤️</button>
+                    <button 
+                        class="btn-action btn-heart" 
+                        data-recipe-id="<?= $recipe['id'] ?>" 
+                        onclick="handleLike(this)">❤️
+                    </button>
                     </div>
                     <div class="recipe-info">
                         <h2><?= htmlspecialchars($recipe['name'] ?? 'Recette sans nom') ?></h2>
@@ -106,10 +116,10 @@ $bestRatedRecipes = getTopRatedRecipes();
     function scrollCarousel() {
         offset += 1;
         if (offset >= carousel.scrollWidth - carousel.clientWidth) {
-            offset = 0; // Réinitialise le défilement
+            offset = 0; 
         }
         carousel.style.transform = `translateX(-${offset}px)`;
     }
 
-    setInterval(scrollCarousel, 30); // Vitesse de défilement
+    setInterval(scrollCarousel, 30); 
 </script>
